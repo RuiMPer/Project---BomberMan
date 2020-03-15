@@ -1,1 +1,2 @@
-console.log("Text")
+let canvas = document.getElementById("canvas")
+canvas.width = 150
