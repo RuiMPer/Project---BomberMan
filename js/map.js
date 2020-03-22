@@ -4,13 +4,13 @@ class Map {
 		this.height = 10;
 		this.width = 10;
 		this.cells = [];
-		this.grid = 64;
+		this.grid = 60;
 		this.numRows = 13;
-		this.numCols = 15;
+		this.numCols = 10;
 		this.softWallImg = new Image();
-		this.softWallImg.src = "/images/wall1.png";
+		this.softWallImg.src = "/images/wall2.jpg";
 		this.wallImg = new Image();
-		this.wallImg.src = "/images/wall2.jpg";
+		this.wallImg.src = "/images/wall1.png";
 		this.entities = [];
 		this.template = [
 			[
@@ -23,30 +23,20 @@ class Map {
 				"▉",
 				"▉",
 				"▉",
-				"▉",
-				"▉",
-				"▉",
-				"▉",
-				"▉",
 				"▉"
 			],
-			["▉", "x", "x", , , , , , , , , , "x", "x", "▉"],
-			["▉", "x", "▉", , "▉", , "▉", , "▉", , "▉", , "▉", "x", "▉"],
-			["▉", "x", , , , , , , , , , , , "x", "▉"],
-			["▉", , "▉", , "▉", , "▉", , "▉", , "▉", , "▉", , "▉"],
-			["▉", , , , , , , , , , , , , , "▉"],
-			["▉", , "▉", , "▉", , "▉", , "▉", , "▉", , "▉", , "▉"],
-			["▉", , , , , , , , , , , , , , "▉"],
-			["▉", , "▉", , "▉", , "▉", , "▉", , "▉", , "▉", , "▉"],
-			["▉", "x", , , , , , , , , , , , "x", "▉"],
-			["▉", "x", "▉", , "▉", , "▉", , "▉", , "▉", , "▉", "x", "▉"],
-			["▉", "x", "x", , , , , , , , , , "x", "x", "▉"],
+			["▉", "x", "x", , , , , ,"x", "▉"],
+			["▉", "x", "▉", , , "▉", , "▉", "x", "▉"],
+			["▉", "x", , , , , , , "x", "▉"],
+			["▉", , "▉", ,  , "▉", , "▉", , "▉"],
+			["▉", , , , , , , , , "▉"],
+			["▉", , "▉", "▉", , "▉", , "▉", , "▉"],
+			["▉", , , , , , , , , "▉"],
+			["▉", , "▉", , , "▉", , "▉", , "▉"],
+			["▉", "x", , , , , , , "x", "▉"],
+			["▉", "x", "▉", "▉", , "▉", , "▉", "x", "▉"],
+			["▉", "x", "x", , , , , "x", "x", "▉"],
 			[
-				"▉",
-				"▉",
-				"▉",
-				"▉",
-				"▉",
 				"▉",
 				"▉",
 				"▉",
@@ -85,10 +75,10 @@ class Map {
 			for (let col = 0; col < this.numCols; col++) {
 				switch (this.cells[row][col]) {
 					case this.types.wall:
-						context.drawImage(this.wallImg, col * grid, row * grid);
+						context.drawImage(this.wallImg, col * this.grid, row * this.grid);
 						break;
 					case this.types.softWall:
-						context.drawImage(this.softWallImg, col * grid, row * grid);
+						context.drawImage(this.softWallImg, col * this.grid, row * this.grid);
 						break;
 				}
 			}

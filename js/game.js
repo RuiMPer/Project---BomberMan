@@ -5,6 +5,7 @@ class Game {
 		this.width = canvas.width;
 		this.height = canvas.height;
 		this.map = new Map(this);
+		this.gameON = true
 	}
 	start() {
 		this.animation()
