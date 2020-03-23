@@ -5,7 +5,7 @@ class Game {
 		this.width = canvas.width;
 		this.height = canvas.height;
 		this.map = new Map(this);
-		this.gameON = true
+		this.player = new Player(this)
 	}
 	start() {
 		this.animation()
@@ -13,6 +13,7 @@ class Game {
 	animation() {
 		this.map.drawLevel();
 		this.map.update();
+		this.player.drawPlayer
 		this.animationId = window.requestAnimationFrame((timestamp) => {
 			let last;
 			let dt;
@@ -21,11 +22,6 @@ class Game {
 			}
 			dt = timestamp - last;
 			last = timestamp;
-			// if (this.gameON) {
-			// 	this.animation();
-			// } else {
-			// 	this.gameOver();
-			// }
 		});
 	}
 }

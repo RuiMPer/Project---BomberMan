@@ -5,14 +5,14 @@ class Map {
 		this.width = 10;
 		this.cells = [];
 		this.grid = 60;
-		this.numRows = 10;
+		this.numRows = 13;
 		this.numCols = 15;
 		this.softWallImg = new Image();
-		this.softWallImg.src = "/images/wall2.jpg";
+		this.softWallImg.src = "/images/wall3.png";
 		this.wallImg = new Image();
 		this.wallImg.src = "/images/wall1.png";
 		this.bgImg = new Image();
-		this.bgImg.src = "/images/wall3.png";
+		this.bgImg.src = "/images/wall2.jpg";
 		this.entities = [];
 		this.template = [
 			[
@@ -32,14 +32,17 @@ class Map {
 				"▉",
 				"▉"
 			],
-			["▉", "x", "x", , , "▉", , , "▉", , , , , "x", "▉"],
+			["▉", "x", "x", , , "▉", , , "▉", , , , "x", "x", "▉"],
 			["▉", "x", "▉", , "▉", , , "▉", , , "▉", , "▉", "x", "▉"],
 			["▉", "x", , , , "▉", , , "▉", , , , , "x", "▉"],
-			["▉", , "▉", , , , "▉", , "▉", , "▉", , "▉", , "▉"],
+			["▉", , "▉", , , , "▉", , , , "▉", , "▉", , "▉"],
 			["▉", , "▉", , "▉", , , "▉", , , "▉", , "▉", , "▉"],
+			["▉", , , , , , "▉", , "▉", , , , "▉", , "▉"],
+			["▉", , , , "▉", , , "▉", , , "▉", , "▉", , "▉"],
+			["▉", , "▉", , "▉", , , , , , "▉", , "▉", "x", "▉"],
 			["▉", "x", , , , "▉", , , , "▉", , , , "x", "▉"],
 			["▉", "x", "▉", , "▉", "▉", , , "▉", , "▉", , "▉", "x", "▉"],
-			["▉", "x", "x", , , "▉", , , "▉", , , , "x", "x", "▉"],
+			["▉", "x", "x", , , "▉", , , "▉", , , "x", "x", "x", "▉"],
 			[
 				"▉",
 				"▉",
@@ -71,7 +74,7 @@ class Map {
 			this.cells[row] = [];
 			for (let col = 0; col < this.numCols; col++) {
 				// 80% chance cells will contain a soft wall
-				if (!this.template[row][col] && Math.random() < 0.8) {
+				if (!this.template[row][col] && Math.random() < 0.7) {
 					this.cells[row][col] = this.types.softWall;
 				} else if (this.template[row][col] === this.types.wall) {
 					this.cells[row][col] = this.types.wall;
