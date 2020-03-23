@@ -13,7 +13,7 @@ class Game {
 	animation() {
 		this.map.drawLevel();
 		this.map.update();
-		this.player.drawPlayer
+		this.player.drawPlayer()
 		this.animationId = window.requestAnimationFrame((timestamp) => {
 			let last;
 			let dt;
