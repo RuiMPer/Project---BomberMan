@@ -13,12 +13,19 @@ class Game {
 	animation() {
 		this.map.drawLevel();
 		this.map.update();
-		this.animationId = window.requestAnimationFrame(() => {
-			if (this.gameON) {
-				this.animation();
-			} else {
-				this.gameOver();
+		this.animationId = window.requestAnimationFrame((timestamp) => {
+			let last;
+			let dt;
+			if (!last) {
+				last = timestamp;
 			}
+			dt = timestamp - last;
+			last = timestamp;
+			// if (this.gameON) {
+			// 	this.animation();
+			// } else {
+			// 	this.gameOver();
+			// }
 		});
 	}
 }

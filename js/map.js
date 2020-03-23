@@ -11,6 +11,8 @@ class Map {
 		this.softWallImg.src = "/images/wall2.jpg";
 		this.wallImg = new Image();
 		this.wallImg.src = "/images/wall1.png";
+		this.bgImg = new Image();
+		this.bgImg.src = "/images/wall3.png";
 		this.entities = [];
 		this.template = [
 			[
@@ -59,7 +61,8 @@ class Map {
 		this.types = {
 			wall: "▉",
 			softWall: 1,
-			bomb: 2
+			bomb: 2,
+			bg: 3
 		};
 	}
 	drawLevel() {
@@ -68,13 +71,15 @@ class Map {
 			this.cells[row] = [];
 			for (let col = 0; col < this.numCols; col++) {
 				// 80% chance cells will contain a soft wall
-				if (!this.template[row][col] && Math.random() < 0.6) {
+				if (!this.template[row][col] && Math.random() < 0.8) {
 					this.cells[row][col] = this.types.softWall;
 				} else if (this.template[row][col] === this.types.wall) {
 					this.cells[row][col] = this.types.wall;
-				}
+				} else if (this.template[row][col] === this.types.bg) {
+					this.cells[row][col] = this.types.bg;
 			}
 		}
+	 }
 	}
 	update() {
 		// update and render everything in the grid
@@ -90,6 +95,9 @@ class Map {
 							col * this.grid,
 							row * this.grid
 						);
+						break;
+					case this.types.bgImg:
+						context.drawImage(this.bgImg, col * this.grid, row * this.grid);
 						break;
 				}
 			}
