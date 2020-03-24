@@ -1,9 +1,9 @@
 class Player {
 	constructor(game) {
 		this.context = game.context;
-		this.row = game.width / 4;
-		this.col = game.height / 2;
-		this.width = 30;
+		this.row = 0;
+		this.col = 0;
+		this.width = 10;
 		this.height = 30;
 		this.bomb = 2;
 		this.speedX = 0;
