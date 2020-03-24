@@ -10,7 +10,6 @@ class Player {
 		this.speedY = 0;
 		this.playerImg = new Image();
 		this.playerImg.src = "/images/Ship4.png";
-
 	}
 	// Save all the images in the character
 	// this.imgs = {}
