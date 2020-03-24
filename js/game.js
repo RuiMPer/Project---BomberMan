@@ -5,16 +5,28 @@ class Game {
 		this.width = canvas.width;
 		this.height = canvas.height;
 		this.map = new Map(this);
-		this.player = new Player(this)
+		this.player = new Player(this);
+		this.player.setControls();
+		this.animationId;
+		this.frame = 0;
+		this.gameON = true;
 	}
 	start() {
-		this.animation()
+		this.animation();
 	}
-	animation() {
+	draw() {
 		this.map.drawLevel();
 		this.map.update();
-		this.player.drawPlayer()
-		this.animationId = window.requestAnimationFrame((timestamp) => {
+		this.player.drawPlayer();
+	}
+	update() {
+		this.frame++;
+		this.player.update();
+	}
+	animation() {
+		this.draw();
+		this.update()
+		this.animationId = window.requestAnimationFrame(timestamp => {
 			let last;
 			let dt;
 			if (!last) {

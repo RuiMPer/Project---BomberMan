@@ -1,14 +1,16 @@
 class Player {
 	constructor(game) {
 		this.context = game.context;
-		this.col = 1;
-		this.row = 1;
-		this.height = 10;
-		this.width = 10;
-		// this.orientation = 'down'
-		// this.score = 0
+		this.row = game.width / 4;
+		this.col = game.height / 2;
+		this.width = 30;
+		this.height = 30;
+		this.bomb = 2;
+		this.speedX = 0;
+		this.speedY = 0;
 		this.playerImg = new Image();
 		this.playerImg.src = "/images/Ship4.png";
+
 	}
 	// Save all the images in the character
 	// this.imgs = {}
@@ -18,23 +20,33 @@ class Player {
 	//   this.imgs[orientation].src = imgPaths[orientation]
 	// }
 	drawPlayer() {
-		this.context.drawImage(this.playerImg, 0, 0);
+		this.context.drawImage(this.playerImg, this.row, this.col);
 	}
-	updateEverything(keyCode) {
-		switch (keyCode) {
-			case 37:
-				player.moveLeft();
-				break;
-			case 38:
-				player.moveUp();
-				break;
-			case 39:
-				player.moveRight();
-				break;
-			case 40:
-				player.moveDown();
-				break;
-		}
+	update() {
+		this.row += this.speedX;
+		this.col += this.speedY;
+	}
+	setControls() {
+		window.addEventListener("keydown", event => {
+			switch (event.keyCode) {
+				case 38: // upkey
+					this.speedY = -1;
+					break;
+				case 40: // downkey
+					this.speedY = 1;
+					break;
+				case 39: // right key
+					this.speedX = 1;
+					break;
+				case 37: // left key
+					this.speedX = -1;
+					break;
+			}
+		});
+		window.addEventListener("keyup", event => {
+			this.speedX = 0;
+			this.speedY = 0;
+		});
 	}
 	moveUp() {
 		this.row--;
