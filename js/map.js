@@ -5,6 +5,8 @@ class Map {
 		this.grid = 60;
 		this.numRows = 13;
 		this.numCols = 15;
+		this.tilewidth = 70;
+		this.tileheight = 70;
 		this.softWallImg = new Image();
 		this.softWallImg.src = "/images/wall3.png";
 		this.wallImg = new Image();
@@ -66,9 +68,6 @@ class Map {
 			bg: 3
 		};
 	}
-	typesSide() {
-		console.log(this.types.wall)
-	}
 	drawLevel() {
 		// populate the level with walls and soft walls
 		for (let row = 0; row < this.numRows; row++) {
@@ -91,17 +90,25 @@ class Map {
 			for (let col = 0; col < this.numCols; col++) {
 				switch (this.cells[row][col]) {
 					case this.types.wall:
-						context.drawImage(this.wallImg, col * this.grid, row * this.grid);
+						context.drawImage(this.wallImg, col * this.grid, row * this.grid, this.tilewidth, this.tileheight);
 						break;
 					case this.types.softWall:
 						context.drawImage(
 							this.softWallImg,
 							col * this.grid,
-							row * this.grid
+							row * this.grid,
+							this.tilewidth,
+							this.tileheight
 						);
 						break;
 					case this.types.bgImg:
-						context.drawImage(this.bgImg, col * this.grid, row * this.grid);
+						context.drawImage(
+							this.bgImg,
+							col * this.grid,
+							row * this.grid,
+							this.tilewidth,
+							this.tileheight
+						);
 						break;
 				}
 			}

@@ -1,11 +1,11 @@
 class Player {
 	constructor(game) {
 		this.context = game.context;
-		this.map = new Map (this)
-		this.row = 0;
-		this.col = 0;
-		this.width = 10;
-		this.height = 10;
+		this.map = new Map(this);
+		this.row = 1;
+		this.col = 1;
+		this.playerWidth = 75;
+		this.playerHeight = 75;
 		this.numBomb = 2;
 		this.speedX = 0;
 		this.speedY = 0;
@@ -13,7 +13,13 @@ class Player {
 		this.playerImg.src = "/images/Ship4.png";
 	}
 	drawPlayer() {
-		this.context.drawImage(this.playerImg, this.row, this.col);
+		this.context.drawImage(
+			this.playerImg,
+			this.row,
+			this.col,
+			this.playerWidth,
+			this.playerHeight
+		);
 	}
 	update() {
 		this.row += this.speedX;
@@ -23,7 +29,7 @@ class Player {
 		window.addEventListener("keydown", event => {
 			switch (event.keyCode) {
 				case 38: // upkey
-					this.speedY = - 2;
+					this.speedY = -2;
 					break;
 				case 40: // downkey
 					this.speedY = 2;
@@ -32,7 +38,7 @@ class Player {
 					this.speedX = 2;
 					break;
 				case 37: // left key
-					this.speedX = - 2;
+					this.speedX = -2;
 					break;
 				// case 17: //space key
 				// 	this.bomb.drawBomb ()
@@ -45,8 +51,8 @@ class Player {
 		});
 	}
 	moveUp() {
-		if (this.map.cells[row][col].types != bg ) {
-			this.row = row
+		if (this.map.cells[row][col].types != bg) {
+			this.row = row;
 			console.log("collide");
 		} else {
 			this.row--;
@@ -65,9 +71,15 @@ class Player {
 		this.col++;
 		// this.orientation = 'right'
 	}
-	// collision () {
-	// 	if (!this.map.cells[row][col]) {
-	// 		console.log("collide");
-	// 	}
-	// }
+	collision() {
+		if (this.row < this.map.types.wall[row] + this.map.tileWidth) {
+			console.log("collide");
+		} else if (this.row + this.playerWidth > this.map.types.wall[row]) {
+			console.log("collide");
+		} else if (this.col < this.map.types.wall[col] + this.map.tileHeight) {
+			console.log("collide");
+		} else if (this.col + this.playerHeight > this.map.types.wall[col]) {
+			console.log("collide");
+		}
+	}
 }

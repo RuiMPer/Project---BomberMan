@@ -18,6 +18,7 @@ class Game {
 	update() {
 		this.frame++;
 		this.player.update();
+		this.player.collision()
 	}
 	animation() {
 		this.draw();
