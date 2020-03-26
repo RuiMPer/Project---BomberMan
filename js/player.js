@@ -72,13 +72,23 @@ class Player {
 		// this.orientation = 'right'
 	}
 	collision() {
-		if (this.row < this.map.types.wall[row] + this.map.tileWidth) {
+		console.log(this, this.player, this.row)
+		if (this.row < this.map.types.wall[this.row] + this.map.tileWidth) {
 			console.log("collide");
-		} else if (this.row + this.playerWidth > this.map.types.wall[row]) {
+		} else if (
+			this.row + this.playerWidth >
+			this.map.types.wall[this.row]
+		) {
 			console.log("collide");
-		} else if (this.col < this.map.types.wall[col] + this.map.tileHeight) {
+		} else if (
+			this.col <
+			this.map.types.wall[this.col] + this.map.tileHeight
+		) {
 			console.log("collide");
-		} else if (this.col + this.playerHeight > this.map.types.wall[col]) {
+		} else if (
+			this.col + this.playerHeight >
+			this.map.types.wall[this.col]
+		) {
 			console.log("collide");
 		}
 	}

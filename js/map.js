@@ -90,7 +90,13 @@ class Map {
 			for (let col = 0; col < this.numCols; col++) {
 				switch (this.cells[row][col]) {
 					case this.types.wall:
-						context.drawImage(this.wallImg, col * this.grid, row * this.grid, this.tilewidth, this.tileheight);
+						context.drawImage(
+							this.wallImg,
+							col * this.grid,
+							row * this.grid,
+							this.tilewidth,
+							this.tileheight
+						);
 						break;
 					case this.types.softWall:
 						context.drawImage(

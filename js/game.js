@@ -18,7 +18,7 @@ class Game {
 	update() {
 		this.frame++;
 		this.player.update();
-		this.player.collision()
+		this.player.collision();
 	}
 	animation() {
 		this.draw();
@@ -38,4 +38,5 @@ class Game {
 		this.map.drawLevel();
 		this.animation();
 	}
+
 }
