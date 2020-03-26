@@ -1,23 +1,17 @@
 class Player {
 	constructor(game) {
 		this.context = game.context;
+		this.map = new Map (this)
 		this.row = 0;
 		this.col = 0;
 		this.width = 10;
-		this.height = 30;
-		this.bomb = 2;
+		this.height = 10;
+		this.numBomb = 2;
 		this.speedX = 0;
 		this.speedY = 0;
 		this.playerImg = new Image();
 		this.playerImg.src = "/images/Ship4.png";
 	}
-	// Save all the images in the character
-	// this.imgs = {}
-	// Loop keys of object
-	// for (var orientation in imgPaths) {
-	//   this.imgs[orientation] = new Image()
-	//   this.imgs[orientation].src = imgPaths[orientation]
-	// }
 	drawPlayer() {
 		this.context.drawImage(this.playerImg, this.row, this.col);
 	}
@@ -29,17 +23,20 @@ class Player {
 		window.addEventListener("keydown", event => {
 			switch (event.keyCode) {
 				case 38: // upkey
-					this.speedY = -1;
+					this.speedY = - 2;
 					break;
 				case 40: // downkey
-					this.speedY = 1;
+					this.speedY = 2;
 					break;
 				case 39: // right key
-					this.speedX = 1;
+					this.speedX = 2;
 					break;
 				case 37: // left key
-					this.speedX = -1;
+					this.speedX = - 2;
 					break;
+				// case 17: //space key
+				// 	this.bomb.drawBomb ()
+				// 	break
 			}
 		});
 		window.addEventListener("keyup", event => {
@@ -48,7 +45,12 @@ class Player {
 		});
 	}
 	moveUp() {
-		this.row--;
+		if (this.map.cells[row][col].types != bg ) {
+			this.row = row
+			console.log("collide");
+		} else {
+			this.row--;
+		}
 		// this.orientation = 'up'
 	}
 	moveDown() {
@@ -63,4 +65,9 @@ class Player {
 		this.col++;
 		// this.orientation = 'right'
 	}
+	// collision () {
+	// 	if (!this.map.cells[row][col]) {
+	// 		console.log("collide");
+	// 	}
+	// }
 }

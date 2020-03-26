@@ -11,12 +11,9 @@ class Game {
 		this.frame = 0;
 		this.gameON = true;
 	}
-	draw(timestamp) {
-		this.map.drawLevel();
+	draw() {
 		this.map.update();
 		this.player.drawPlayer();
-		this.update(timestamp)
-		const animation = window.requestAnimationFrame(timestamp => this.draw(timestamp))
 	}
 	update() {
 		this.frame++;
@@ -25,17 +22,19 @@ class Game {
 	animation() {
 		this.draw();
 		this.update();
-		this.animationId = window.requestAnimationFrame((timestamp) => {
-			let last;
-			let dt;
-			if (!last) {
-				last = timestamp;
-			}
-			dt = timestamp - last;
-			last = timestamp;
+		this.animationId = window.requestAnimationFrame(timestamp => {
+			//   let last;
+			//   let dt;
+			//   if (!last) {
+			//     last = timestamp;
+			//   }
+			//   dt = timestamp - last;
+			//   last = timestamp;
+			this.animation();
 		});
 	}
 	start() {
+		this.map.drawLevel();
 		this.animation();
 	}
 }

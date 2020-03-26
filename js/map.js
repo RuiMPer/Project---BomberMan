@@ -1,8 +1,6 @@
 class Map {
 	constructor(game) {
 		this.context = game.context;
-		this.height = 10;
-		this.width = 10;
 		this.cells = [];
 		this.grid = 60;
 		this.numRows = 13;
@@ -68,6 +66,9 @@ class Map {
 			bg: 3
 		};
 	}
+	typesSide() {
+		console.log(this.types.wall)
+	}
 	drawLevel() {
 		// populate the level with walls and soft walls
 		for (let row = 0; row < this.numRows; row++) {
@@ -80,9 +81,9 @@ class Map {
 					this.cells[row][col] = this.types.wall;
 				} else if (this.template[row][col] === this.types.bg) {
 					this.cells[row][col] = this.types.bg;
+				}
 			}
 		}
-	 }
 	}
 	update() {
 		// update and render everything in the grid
