@@ -42,49 +42,30 @@ class Player {
 			// 	this.row = this.row
 			// 	this.col = this.col
 			// } else {
-			if (event.keyCode === 87) {
-				this.row -= 1;
-				this.y -= this.height;
+			switch (event.keyCode) {
+				case 87: // upkey
+						this.row -= 1;
+						this.y -= this.height;
+					break;
+				case 83: // downkey
+					this.row += 1;
+					this.y += this.height;
+					break;
+				case 68: // right key
+					this.col += 1;
+					this.x += this.width;
+					break;
+				case 65: // left key
+					this.col -= 1;
+					this.x -= this.width;
+					break;
+				case 17: //left ctrl
+					if (this.numBomb1 > 0) {
+						this.setBomb;
+					}
 			}
-			if (event.keyCode === 83) {
-				this.row += 1;
-				this.y += this.height;
-			}
-			if (event.keyCode === 68){
-				this.col += 1;
-				this.x += this.width;
-			}
-			if (event.keyCode === 65) {
-				this.col -= 1;
-				this.x -= this.width;
-			}
-			// switch (event.keyCode) {
-			// 	case 87: // upkey
-			// 		if ((this.colision = false)) {
-			// 			this.row -= 1;
-			// 			this.y -= this.height;
-			// 		} else {
-			// 			return this.row, this.y
-			// 		}
-			// 		break;
-			// 	case 83: // downkey
-			// 		this.row += 1;
-			// 		this.y += this.height;
-			// 		break;
-			// 	case 68: // right key
-			// 		this.col += 1;
-			// 		this.x += this.width;
-			// 		break;
-			// 	case 65: // left key
-			// 		this.col -= 1;
-			// 		this.x -= this.width;
-			// 		break;
-			// 	case 17: //left ctrl
-			// 		if (this.numBomb1 > 0) {
-			// 			this.setBomb;
-			// 		}
-			// }
 			this.setOuterBoundries();
+			this.checkCollision();
 			console.log("Row: ", this.row, "Col: ", this.col);
 			// }
 		});
@@ -116,7 +97,26 @@ class Player {
 		const currentCell = this.map.cells[this.row][this.col];
 		const types = this.map.types;
 		if (currentCell === types.wall) {
-			this.collision = true;
+			// left:
+			if (this.x <= 0) {
+				this.x = this.width;
+				this.col += 1;
+			}
+		// 	// right:
+		// 	if (this.x >= this.game.map.tilewidth - this.width) {
+		// 		this.x -= this.width;
+		// 		this.col = this.col;
+		// 	}
+		// 	// top:
+		// 	if (this.height <= 0) {
+		// 		this.row += 1;
+		// 		this.y += this.height;
+		// 	}
+		// 	// bottom:
+		// 	if (this.y >= this.game.map.tileheight - this.height) {
+		// 		this.y -= this.height;
+		// 		this.row -= 1;
+		// 	}
 			console.log("Wall");
 		} else if (currentCell === types.softWall) {
 			this.colision = true;

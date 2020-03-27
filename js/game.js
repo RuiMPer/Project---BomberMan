@@ -18,7 +18,7 @@ class Game {
 	}
 	update() {
 		this.frame++;
-		this.player.checkCollision();
+		// this.player.checkCollision();
 	}
 	animation(timestamp) {
 		this.draw();
