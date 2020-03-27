@@ -2,11 +2,11 @@ class Map {
 	constructor(game) {
 		this.context = game.context;
 		this.cells = [];
-		this.grid = 60;
+		this.grid = 65;
 		this.numRows = 13;
 		this.numCols = 15;
-		this.tilewidth = 70;
-		this.tileheight = 70;
+		this.tilewidth = 65;
+		this.tileheight = 65;
 		this.softWallImg = new Image();
 		this.softWallImg.src = "/images/wall3.png";
 		this.wallImg = new Image();
@@ -68,12 +68,12 @@ class Map {
 			bg: 3
 		};
 	}
-	drawLevel() {
+	setUpLevel() {
 		// populate the level with walls and soft walls
 		for (let row = 0; row < this.numRows; row++) {
 			this.cells[row] = [];
 			for (let col = 0; col < this.numCols; col++) {
-				// 80% chance cells will contain a soft wall
+				// 70% chance cells will contain a soft wall
 				if (!this.template[row][col] && Math.random() < 0.7) {
 					this.cells[row][col] = this.types.softWall;
 				} else if (this.template[row][col] === this.types.wall) {
@@ -84,7 +84,7 @@ class Map {
 			}
 		}
 	}
-	update() {
+	draw() {
 		// update and render everything in the grid
 		for (let row = 0; row < this.numRows; row++) {
 			for (let col = 0; col < this.numCols; col++) {
