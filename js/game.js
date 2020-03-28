@@ -41,4 +41,7 @@ class Game {
 		this.map.setUpLevel();
 		this.animation();
 	}
+	// reset () {
+	// 	this.
+	// }
 }
