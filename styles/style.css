@@ -38,6 +38,21 @@ html {
 	justify-content: center;
 }
 #game-board button {
+	color: white;
 	height: 2rem;
 	width: auto;
+	margin-left: 10em;
+	background-color: transparent;
+	padding: 0em 8em;
+}
+#game-menu h2 {
+	text-align: center;
+	color: white;
+}
+#game-menu h3 {
+	color: white;
+	text-align: center;
+}
+#game-menu ul {
+	color: white;
 }
