@@ -18,6 +18,13 @@ class Game {
 		this.map.draw();
 		this.player1.drawPlayer();
 		this.player2.drawPlayer();
+		// since bombs will be more then one, will be in an array, we'll loop on that array
+		for (let bomb of this.player1.bomb1) {
+			bomb.drawBomb();
+		}
+		for (let bomb of this.player2.bomb2) {
+			bomb.drawBomb();
+		}
 	}
 	update() {
 		this.frame++;

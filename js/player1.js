@@ -14,19 +14,15 @@ class Player1 {
 
 		this.x = this.width; // setting the starting position in the top left corner
 		this.y = this.height; // setting the starting position in the top left corner
-		this.x1 = this.game.width - this.width; // setting the starting position in the top right corner
-		this.y1 = this.height; // setting the starting position in the top right corner
+
 		this.numBomb1 = 1;
 		this.bomb1 = [];
 
-		this.numBomb2 = 1;
-		this.bomb2 = [];
 
 		this.playerImg1 = new Image();
 		this.playerImg1.src = "/images/Ship4.png";
 
-		this.playerImg2 = new Image();
-		this.playerImg2.src = "/images/Ship5.png";
+
 
 		this.collision = false;
 		this.dead = false;
@@ -66,12 +62,12 @@ class Player1 {
 					this.col -= 1;
 					this.x -= this.width;
 					break;
-				// case 17: //left ctrl
-				// 	if (this.numBomb1 > 0) {
-				// 		this.placeBomb();
-				// 	}
+				case 71: //left ctrl
+					if (this.numBomb1 > 0) {
+						this.placeBomb();
+					}
 			}
-			this.checkCollision()
+			// this.checkCollision();
 			this.setOuterBoundries();
 			console.log("Row: ", this.row, "Col: ", this.col);
 			// }
@@ -99,24 +95,16 @@ class Player1 {
 			this.row -= 1;
 		}
 	}
-	// placeBomb() {
-	// 	this.numBombs -= 1;
-	// 	this.bomb1.push(this.bomb);
-	// 	this.game.bomb.drawBomb();
-	// 	// window.setTimeout(bomb.detonate.bind(bomb), 3000);
-	// }
-	// left() {
-	// 	return this.x;
-	// }
-	// right() {
-	// 	return this.x + this.width;
-	// }
-	// top() {
-	// 	return this.y;
-	// }
-	// bottom() {
-	// 	return this.y + this.height;
-	// }
+	placeBomb() {
+		this.numBombs -= 1;
+		// add a new bomb to array of bombs
+		this.bomb1.push(new Bomb(this));
+		setTimeout(() => {
+			// remove the bomb after 3 seconds
+			// add here what do you wwant to trigger when it explodes
+			this.bomb1.shift();
+		}, 3000);
+	}
 	checkCollision() {
 		const currentCell = this.map.cells[this.row][this.col];
 		const types = this.map.types;
