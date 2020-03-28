@@ -71,7 +71,7 @@ class Player1 {
 				// 		this.placeBomb();
 				// 	}
 			}
-			this.checkCollision();
+			this.checkCollision()
 			this.setOuterBoundries();
 			console.log("Row: ", this.row, "Col: ", this.col);
 			// }
