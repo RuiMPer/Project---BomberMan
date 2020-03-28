@@ -102,6 +102,7 @@ class Player1 {
 		setTimeout(() => {
 			// remove the bomb after 3 seconds
 			// add here what do you wwant to trigger when it explodes
+			this.bomb.explodeBomb()
 			this.bomb1.shift();
 		}, 3000);
 	}

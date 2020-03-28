@@ -1,17 +1,17 @@
 class Bomb {
-  constructor(player) {
-    this.context = player.game.context;
-    this.player = player;
-    this.bombImg = new Image();
-    this.bombImg.src = "/images/bomb.png";
-    this.width = 50;
-    this.height = 50;
-    //change the col and rol to x and y, since we want to draw it exactly where the player is
-    this.x = this.player.x;
-    this.y = this.player.y;
-    this.timer = 2000;
-    this.alive = true;
-    this.exploded = false;
+	constructor(player) {
+		this.context = player.game.context;
+		this.player = player;
+		this.bombImg = new Image();
+		this.bombImg.src = "/images/bomb.png";
+		this.width = 50;
+		this.height = 50;
+		//change the col and rol to x and y, since we want to draw it exactly where the player is
+		this.x = this.player.x;
+		this.y = this.player.y;
+		this.timer = 2000;
+		this.alive = true;
+		this.exploded = false;
 	}
 	drawBomb() {
 		// this.context.beginPath()
@@ -27,9 +27,11 @@ class Bomb {
 		);
 		console.log("bomb");
 	}
-	// explodeBomb() {
-	// 	if (!this.alive) {
-	// 		bomb;
-	// 	}
-	// }
+	explodeBomb() {
+		// if (this.alive = true) {
+			this.context.fillStyle = "black";
+			this.context.beginPath()
+			this.context.fillRect(this.x, this.y + 3, 2, 5);
+		// }
+	}
 }

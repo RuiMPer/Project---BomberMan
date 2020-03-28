@@ -7,12 +7,12 @@ class Player2 {
 		this.bomb = this.game.bomb;
 
 		this.row = 1;
-		this.col = 1;
+		this.col = 13;
 
 		this.width = this.game.map.tilewidth;
 		this.height = this.game.map.tileheight;
 
-		this.x = this.game.width - this.width; // setting the starting position in the top right corner
+		this.x = this.game.width - this.width*2; // setting the starting position in the top right corner
 		this.y = this.height; // setting the starting position in the top right corner
 
 		this.numBomb2 = 1;
